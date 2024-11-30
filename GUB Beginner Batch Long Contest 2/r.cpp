@@ -12,7 +12,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             if (i == j || j == N - i - 1) {
-                cout << "*";
+                cout << "* ";
             } else {
                 cout << " ";
             }

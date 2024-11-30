@@ -1,20 +1,25 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main() {
+    long long x;
     int n;
     cin >> n;
     
-    vector<int> numbers(n);
-    
+    long long min = 1000000000000000000, max = -1;
+
     for (int i = 0; i < n; i++) {
-        cin >> numbers[i];
+        cin >> x;
+        
+        if(x < min) {
+            min = x;
+        }
+        if(x > max) {
+            max = x;
+        }
     }
     
-    int max_num = *max_element(numbers.begin(), numbers.end());
-    int min_num = *min_element(numbers.begin(), numbers.end());
-    
-    cout << max_num << " " << min_num << endl;
-    
+    cout << max << " " << min << endl;
+
     return 0;
 }
