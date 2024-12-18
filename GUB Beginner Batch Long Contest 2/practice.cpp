@@ -1,19 +1,24 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
 
 int main() {
-    int n, height, maxHeight = 0, minHeight = 101;
-    cin >> n;
+    int n;
+    scanf("%d", &n); // Input the size of the arrowhead (n must be odd)
 
-    // Read the heights and find max and min in one loop
-    for (int i = 0; i < n; i++) {
-        cin >> height;
-        if (height > maxHeight) maxHeight = height;
-        if (height < minHeight) minHeight = height;
+    // Print the top half of the arrowhead (increasing stars)
+    for (int i = 1; i <= (n / 2) + 1; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
     }
 
-    // Calculate and print the wind strength
-    cout << (maxHeight - minHeight) << endl;
+    // Print the bottom half of the arrowhead (decreasing stars)
+    for (int i = (n / 2); i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
 
     return 0;
 }
