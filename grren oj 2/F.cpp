@@ -1,15 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-int t;
-cin>>t;
-while(t--){
-    int  n;
-    cin>>n;
-    cout<< n <<"\n";
-}
-return 0;
+int main() {
+    int A, B;
+    cin >> A >> B;
+    int d = 1;
+    A = A % 10;
+    for (int i = 0; i < B; i++) {
+        d = (d* A) % 10;
+    }
+    cout << d << endl;
+    return 0;
 }

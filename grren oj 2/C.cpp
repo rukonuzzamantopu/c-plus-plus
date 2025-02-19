@@ -1,15 +1,16 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-int t;
-cin>>t;
-while(t--){
-    int  n;
-    cin>>n;
-    cout<< counts(n)<<"\n";
-}
-return 0;
+int main() {
+    int D, C;
+    cin >> D >> C;
+    if (D == C) {
+        cout << "Today is the Contest Day!" << endl;
+    } else if (D > C) {
+        cout << "Contest has ended!" << endl;
+    } else {
+        cout << (C - D) << endl;
+    }
+
+    return 0;
 }
