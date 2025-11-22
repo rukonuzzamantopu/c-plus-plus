@@ -6,43 +6,55 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-
-    int T;
-    cin >> T;
-    while (T--)
+    int t;
+    cin >> t;
+    int n, s;
+    while (t--)
     {
-        int N, S;
-        cin >> N >> S;
-        vector<int> A(N);
-        for (int i = 0; i < N; i++)
+        int temp = 0;
+        int result = 0;
+        cin >> n >> s;
+        int ar[n];
+        for (int i = 0; i < n; i++)
         {
-            cin >> A[i];
+            cin >> ar[i];
         }
 
-        bool found = false;
-        for (int i = 0; i < N - 2 && !found; i++)
+        if (n < 3)
         {
-            for (int j = i + 1; j < N - 1 && !found; j++)
+            cout << "NO" << endl;
+            continue;
+        }
+
+        sort(ar, ar + n);
+        bool found = false;
+        for (int i = 0; i < n - 2 && !found; i++)
+        {
+            int l = i + 1;
+            int r = n - 1;
+            while (l < r)
             {
-                for (int k = j + 1; k < N && !found; k++)
+                long long sum3 = (long long)ar[i] + ar[l] + ar[r];
+                if (sum3 == s)
                 {
-                    if (A[i] + A[j] + A[k] == S)
-                    {
-                        found = true;
-                    }
+                    found = true;
+                    break;
+                }
+                else if (sum3 < s)
+                {
+                    l++;
+                }
+                else
+                {
+                    r--;
                 }
             }
         }
 
         if (found)
-        {
-            cout << "YES\n";
-        }
+            cout << "YES" << endl;
         else
-        {
-            cout << "NO\n";
-        }
+            cout << "NO" << endl;
     }
-
     return 0;
 }
