@@ -1,38 +1,68 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Student
+class Student_info
 {
+public:
     int id;
     string name;
     char section;
     int total_marks;
-};
-bool compareStudents(const Student &a, const Student &b)
-{
-    if (a.total_marks == b.total_marks)
+
+    Student_info(int id, string name, char section, int total_marks)
     {
-        return a.id < b.id;
+        this->id = id;
+        this->name = name;
+        this->section = section;
+        this->total_marks = total_marks;
     }
-    return a.total_marks > b.total_marks;
-}
+};
+
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int T;
     cin >> T;
+
     while (T--)
     {
-        vector<Student> students(3);
+
+        Student_info *students[3];
+
         for (int i = 0; i < 3; i++)
         {
-            cin >> students[i].id >> students[i].name >> students[i].section >> students[i].total_marks;
+            int id, marks;
+            string name;
+            char section;
+            cin >> id >> name >> section >> marks;
+
+            students[i] = new Student_info(id, name, section, marks);
         }
-        sort(students.begin(), students.end(), compareStudents);
-        cout << students[0].id << " " << students[0].name << " " << students[0].section << " " << students[0].total_marks << "\n";
+
+        Student_info *hightest = students[0];
+
+        for (int i = 1; i < 3; i++)
+        {
+            if (students[i]->total_marks > hightest->total_marks)
+            {
+                hightest = students[i];
+            }
+            else if (students[i]->total_marks == hightest->total_marks)
+            {
+                if (students[i]->id < hightest->id)
+                {
+                    hightest = students[i];
+                }
+            }
+        }
+
+        cout << hightest->id << " " << hightest->name << " "
+             << hightest->section << " " << hightest->total_marks << "\n";
+
+        for (int i = 0; i < 3; i++)
+            delete students[i];
     }
 
     return 0;
