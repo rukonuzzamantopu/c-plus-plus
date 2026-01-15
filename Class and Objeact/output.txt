@@ -1,0 +1,6 @@
+Name: Alice
+Age: 20
+Marks: 85.5
+Name: Bob
+Age: 22
+Marks: 90
